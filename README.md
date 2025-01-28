@@ -1,39 +1,128 @@
+Here is the (_hopefully_) super simple guide to installing the Sparx Autocompleter client on different platforms.
 
-# Sparx Maths Autocompleter
+# Windows
 
-[![License](https://img.shields.io/badge/Apache_License_2.0-007EC6?style=for-the-badge&logo=Apache&logoColor=white)](https://www.apache.org/licenses/LICENSE-2.0) [![Node JS](https://img.shields.io/badge/Node%20js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/) [![Gemini](https://img.shields.io/badge/Google%20Gemini-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white
-)](https://gemini.google.com/)
+Each step will include a video demonstrating the text instructions for visual learners or those who prefer video guides (WIP).
 
-A work-in-progress Sparx Maths completer using pure requests and no browser manipulation!
+## 1. Installing Git
 
-Refer to the [Guide for Dummies](https://github.com/woody-willis/sparx-autocompleter/wiki/Guide-for-Dummies) if you are clueless.
+First, you need to install Git. This allows you to clone the repository to your drive.
 
-## Roadmap
+### Via the installer
 
-| Feature                 | Working |
-|-------------------------|---------|
-| Answer Questions        | ✅      |
-| Bookwork Checks         | ✅      |
-| Question Time Spoofing  | ✅      |
-| Times Tables            |         |
-| Sparx Reader            |         |
-| Sparx Science           |         |
+Visit the [Git for Windows download page](https://git-scm.com/downloads/win) and download the installer that matches your version of Windows.
 
-## Demo
+Under "Standalone Installer", download either the 32-bit or 64-bit Git for Windows Setup, depending on your system. ([How to tell if my PC is 32-bit or 64-bit?](https://youtu.be/GvRdU_mHBcU))
 
-![Demo GIF](https://raw.githubusercontent.com/woody-willis/sparx-autocompleter/refs/heads/main/demo.gif)
+Once it has downloaded, run it and it will guide you through the setup process.
 
-## Installation
+**IMPORTANT**: Make sure to select "Git from the command line and also 3rd-party software" when installing. This is so that you can use the command prompt to clone directories.
 
-- Install [NodeJS](https://nodejs.org/en)
-- Add credentials to `.env`
+### Via WinGet
 
-```bash
+Open Powershell and type the following:
+```
+winget install --id Git.Git -e --source winget
+```
+
+Press "Yes" on the User Account Control prompt and wait until the setup finishes.
+
+The Powershell window should output "Successfully installed"
+
+## 2. Installing Node.js
+
+Now you need to install Node.js. This provides npm, a JavaScript package manager. It also lets you run the Sparx Autocompleter.
+
+### Via the installer
+
+Go to the [Node.js site](https://nodejs.org/en). It should have a large button saying "Download Node.js (LTS)".
+
+Click it to download (the appropriate version for your system, such as 32-bit or 64-bit, should be selected automatically).
+
+Once it has downloaded, run it and it will guide you through the setup process.
+
+**IMPORTANT**: Make sure to select "Add to PATH" when installing. This is so that you can use Node.js on command prompt without configuration.
+
+## 3. Installing Sparx Autocompleter
+
+Open a new command prompt (cmd) window.
+
+Use the ```cd``` command to navigate to the directory where you want to clone the autocompleter. (e.g. ```cd C:\Users\username\Documents```)
+
+Now, clone the repository using the command: 
+```
 git clone https://github.com/woody-willis/sparx-autocompleter
-cd sparx-autocompleter
+```
 
+Once completed, navigate to the cloned repository using the command: 
+```
+cd sparx-autocompleter
+```
+
+Now, install dependencies for the autocompleter using the command: 
+```
 npm install
+```
+
+## 4. Setting up the .env
+
+Find the file named ```.env``` in the directory ```sparx-autocompleter``` which you cloned earlier.
+
+Open it with your text editor of choice.
+
+### Adding Sparx credentials
+
+Enter your Sparx details between the quotes ("") of this text (in ```.env```):
+
+```
+SPARX_SCHOOL=""
+SPARX_USERNAME=""
+SPARX_PASSWORD=""
+```
+
+The school name should ideally be exact, but the autocompleter can search for near matches.
+
+**IMPORTANT**: Microsoft and Google accounts currently do not work, this is for Sparx accounts only!
+
+### Adding a Gemini API key
+
+Go to the [Google AI Studio "Get an API key" page](https://aistudio.google.com/app/apikey).
+
+Press "Create API key" and select a project.
+
+You should get an API key that looks like ```AIzaSy*****```.
+
+Press "Copy" and paste it in between the quotes ("") of this text (in ```.env```):
+
+```
+GEMINI_API_KEY=""
+```
+
+### Adding a DataImpulse API key (optional)
+
+Go to [DataImpulse](https://dataimpulse.com/).
+
+Add a new plan and purchase a residential proxy plan.
+
+Go to "API Management" and press the copy button next to "API Token".
+
+You should get an API key that looks like ```http://************.gb:***********@gw.dataimpulse.com```.
+
+Remove the comment (#) and paste it in between the quotes ("") of this text (in ```.env```):
+
+```
+DATAIMPULSE_API_URL=""
+```
+
+## 5. Running Sparx Autocompleter
+
+Use the ```cd``` command to navigate to the ```sparx-autocompleter``` directory. (e.g. ```cd C:\Users\username\Documents\sparx-autocompleter```)
+
+Now use the command:
+```
 npm start
 ```
 
-If you get an `Error: Failed to login due to unexpected error.`, please wait a few seconds and try again. I'm not entirely sure why this happens but it's probably a security thing within Sparx.
+The Sparx Autocompleter should now be running successfully!
+
+**Any time you need to use the program again, repeat step 5.**
