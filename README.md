@@ -1,4 +1,5 @@
 Here is the (_hopefully_) super simple guide to installing the Sparx Autocompleter client on different platforms.
+Tutorial:https://www.youtube.com/watch?v=cPtYj4sWg74
 
 # Windows
 
